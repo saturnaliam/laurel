@@ -16,9 +16,10 @@ struct message_header_t {
   char command_type;
   u8 version;
   u8 body_length;
+  bool error;
 };
 
 struct message_t {
   message_header_t header;
-  std::string_view body;
+  std::string body;
 };
