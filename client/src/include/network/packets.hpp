@@ -11,9 +11,13 @@ PAYLOAD_TOO_LARGE = 413,
 NOT_IMPLEMENTED = 501,
 };
 
+enum class Command : char {
+PLAY = 'p',
+};
+
 struct message_header_t {
   std::string magic_number;
-  char command_type;
+  Command command_type;
   u8 version;
   u8 body_length;
   bool error;

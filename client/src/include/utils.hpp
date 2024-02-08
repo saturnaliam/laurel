@@ -26,3 +26,5 @@ static void panic(std::string_view message, bool kill = false) {
   std::cerr << message << "\n";
   if (kill) exit(1);
 }
+
+#define UNIMPLEMENTED panic("unimplemented!", true);

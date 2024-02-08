@@ -9,7 +9,7 @@ std::string serialize_message(const message_t &message) {
 
   // serializing header
   serialized_message += message.header.magic_number + '\t' + 
-    message.header.command_type + '\t' +
+    static_cast<char>(message.header.command_type) + '\t' +
     std::to_string(message.header.version) + '\t' +
     std::to_string(message.header.body_length);
 
@@ -33,7 +33,7 @@ message_t deserialize_message(const std::string &serialized) {
         message.header.magic_number = tokens[i];
         break;
       case 1:
-        message.header.command_type = (tokens[i].c_str())[0];
+        message.header.command_type = static_cast<Command>((tokens[i].c_str())[0]);
         break;
       case 2:
         message.header.version = atoi(tokens[i].c_str());
